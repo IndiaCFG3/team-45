@@ -111,12 +111,26 @@ def addmobiliser():
         cid=request.form['cid']
         db.child('mobilizer').push({"center_id": cid})
         tar=request.form['tar']
-        db.child('mobilizer').push({"full_target": tar})
-        doc_ref.set({
-            'name':name,
-            'phone':phone,
-            'center_id':cid,
-            'full_target':tar
-        })
         return render_template('addmobiliser.html')
     return render_template('addmobiliser.html')
+
+@app.route('/delmobiliser',methods=['GET','POST'])
+def delmobiliser():
+    if request.method == 'POST':
+        name = request.form['name']
+        db.child('mobilizer').pop({"name": name})
+        phone=request.form['phone']
+        db.child('mobilizer').pop({"phone": phone})
+        cid=request.form['cid']
+        db.child('mobilizer').pop({"center_id": cid})
+        tar=request.form['tar']
+        db.child('mobilizer').pop({"full_target": tar})
+        db.child('mobilizer').push({"full_target": tar})
+        doc_ref.set({
+            'name':NULL,
+            'phone':NULL,
+            'center_id':NULL,
+            'full_target':NULL
+        })
+        return render_template('delmobiliser.html')
+    return render_template('delmobiliser.html')
