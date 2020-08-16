@@ -24,6 +24,10 @@ border:2px solid #333;
   <h2>Delete a Mobiliser</h2><br><br>
   <form action="{{url_for('delmobiliser')}}">
     <div class="form-group">
+      <div class="form-group">
+    <label for="mobilizer_id"><b>Enter a Mobiliser id:</b></label>&emsp;
+  <input type="number" id="mobilizer_id" name="mobilizer_id" placeholder="1"  required><br><br>
+    </div >
         <label for="name"><b>Name</b></label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
       <input type="name" id="name" placeholder="Mobiliser name" name="name" required><br><br>
     </div>
