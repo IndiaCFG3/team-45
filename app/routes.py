@@ -7,7 +7,7 @@ import firebase_admin
 from firebase_admin import credentials, auth, firestore
 import pyrebase
 
-service_cred = credentials.Certificate('/home/bhavya_sheth/Desktop/jpmc45/app/serviceAccountKey.json')
+service_cred = credentials.Certificate('./app/serviceAccountKey.json')
 admin_app = firebase_admin.initialize_app(service_cred)
 
 firebase = pyrebase.initialize_app(db_config)
@@ -18,7 +18,6 @@ client_auth = firebase.auth()
 @app.route('/')
 @app.route('/index')
 def index():
-    # return render_template('login.html')
     return render_template('home.html')
 
 
@@ -26,7 +25,7 @@ def index():
 def login():
     if request.method == 'GET':
         return render_template('login.html')
-    
+
     else:
         email = request.values.get('email')
         password = request.values.get('password')
@@ -50,7 +49,7 @@ def signup():
     print(request)
     if request.method == 'GET':
         return render_template('signup.html')
-    
+
     else:
         email = request.form['email']
         password = request.form['password']
@@ -63,11 +62,11 @@ def signup():
         name = request.form['fname'] + ' ' + request.form['lname']
         print(f'name is {name}')
 
-        # Sign up user 
+        # Sign up user
         try:
             creds = client_auth.create_user_with_email_and_password(email, password)
             print(creds)
-            print('sign up successful') 
+            print('sign up successful')
         except:
             flash('Sign up failed. Please try again!')
             print('error during sign up')
@@ -76,7 +75,7 @@ def signup():
         #give user admin role
         try:
             user = auth.get_user_by_email(email)
-            if admin == 'on':  
+            if admin == 'on':
                 auth.set_custom_user_claims(user.uid, {'admin': True})
             else:
                 auth.set_custom_user_claims(user.uid, {'admin': False})
@@ -99,5 +98,63 @@ def signup():
             print('database didnt work')
         return redirect('/')
 
-        
-    
+
+@app.route('/addmobiliser',methods=['GET','POST'])
+def addmobiliser():
+    if request.method == 'POST':
+        doc_ref = db.collection(u'mobilizer').document(f'{mobilizer.moid}')
+        # name = request.form['name']
+        # db.child('mobilizer').push({"name": name})
+        # phone=request.form['phone']
+        # db.child('mobilizer').push({"phone": phone})
+        # cid=request.form['cid']
+        # db.child('mobilizer').push({"center_id": cid})
+        # tar=request.form['tar']
+
+        db.collection('')
+
+        # client_auth.current_user
+        return render_template('addmobiliser.html')
+
+    else:
+        return render_template('addmobiliser.html')
+
+@app.route('/delmobiliser',methods=['GET','POST'])
+def delmobiliser():
+    if request.method == 'POST':
+        name = request.form['name']
+        db.child('mobilizer').pop({"name": name})
+        phone=request.form['phone']
+        db.child('mobilizer').pop({"phone": phone})
+        cid=request.form['cid']
+        db.child('mobilizer').pop({"center_id": cid})
+        tar=request.form['tar']
+        db.child('mobilizer').pop({"full_target": tar})
+        db.child('mobilizer').push({"full_target": tar})
+        doc_ref.set({
+            'name':NULL,
+            'phone':NULL,
+            'center_id':NULL,
+            'full_target':NULL
+        })
+        return render_template('delmobiliser.html')
+    return render_template('delmobiliser.html')
+
+@app.route('/updatemobiliser',methods=['GET','POST'])
+def updatemobiliser():
+    if request.method == 'POST':
+        name = request.form['name']
+        db.child('mobilizer').update({"name": name})
+        phone=request.form['phone']
+        db.child('mobilizer').update({"phone": phone})
+        cid=request.form['cid']
+        db.child('mobilizer').update({"center_id": cid})
+        tar=request.form['tar']
+        db.child('mobilizer').update({"full_target": tar})
+
+        return render_template('updatemobiliser.html')
+    return render_template('updatemobiliser.html')
+
+@app.route('/leads')
+def leads():
+    return render_template('leads.html')

@@ -10,7 +10,7 @@
 </head>
     <style>
 .box{
-margin:0 auto; 
+margin:0 auto;
 width:600px //you can set it in %.
 padding:20px;
 background:lightblue;
@@ -20,8 +20,14 @@ border:2px solid #333;
 <body>
 <div class="box">
 <div class="container">
+    <a href="docs.html" class="btn btn-primary btn-lg disabled" role="button" aria-disabled="true" style=" float:right">Home</a>
   <h2>Update Mobiliser Details</h2><br><br>
+<<<<<<< HEAD
+    
   <form action="/">
+=======
+  <form action="{{url_for('updatemobiliser')}}">
+>>>>>>> 2522df4b687fd508befc96ddd18083313184be9a
       <div class="form-group">
         <label for="name"><b>Name</b></label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
       <input type="name" id="name" placeholder="Mobiliser name" name="name" required><br><br>
@@ -34,17 +40,13 @@ border:2px solid #333;
     <label for="cid"><b>Enter Center-ID</b></label>&emsp;&emsp;&emsp;&emsp;&emsp;
   <input type="number" id="cid" name="cid" placeholder="Mobiliser Center-Id"  required><br><br>
     </div >
-      <div class="form-group">
-    <label for="reg"><b>Enter Region</b></label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-  <input type="text" id="reg" name="reg" placeholder="Region"  required><br><br>
-    </div >
-       
+
        <div class="form-group">
     <label for="tar"><b>Enter Target</b></label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
   <input type="number" id="tar" name="tar" placeholder="Target for mobiliser" required><br><br>
     </div >
 
-      
+
     <button type="submit" class="btn btn-primary">Update</button>
   </form>
 </div>
