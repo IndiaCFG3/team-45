@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up!</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row no-gutter">
+        <div class="col-md-8 col-lg-6">
+          <div class="login d-flex align-items-center py-5">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-9 col-lg-8 mx-auto">
+                  <h3 class="login-heading mb-4 font-weight-bold">Sign Up:</h3>
+                  <form>
+                    <div class="form-label-group">
+                      <input
+                        type="text"
+                        id="fname"
+                        class="form-control"
+                        placeholder="First Name"
+                        required
+                        autofocus
+                      />
+                      <label for="fname">First Name</label>
+                    </div>
+
+                    <div class="form-label-group">
+                      <input
+                        type="text"
+                        id="lname"
+                        class="form-control"
+                        placeholder="Last Name"
+                        required
+                        autofocus
+                      />
+                      <label for="lname">Last Name</label>
+                    </div>
+
+                    <div class="form-label-group">
+                      <input
+                        type="email"
+                        id="inputEmail"
+                        class="form-control"
+                        placeholder="Email address"
+                        required
+                        autofocus
+                      />
+                      <label for="inputEmail">Email address</label>
+                    </div>
+
+                    <div class="form-label-group">
+                      <input
+                        type="password"
+                        id="inputPassword"
+                        class="form-control"
+                        placeholder="Password"
+                        required
+                      />
+                      <label for="inputPassword">Password</label>
+                    </div>
+
+                    <div class="form-label-group">
+                      <input
+                        type="password"
+                        id="confirmPassword"
+                        class="form-control"
+                        placeholder="confirm Password"
+                        required
+                      />
+                      <label for="confirmPassword">Confirm-Password</label>
+                    </div>
+
+                    <button
+                      class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mt-4 mb-2"
+                      type="submit"
+                    >
+                      Sign Up!
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+      </div>
+    </div>
+  </body>
+</html>
