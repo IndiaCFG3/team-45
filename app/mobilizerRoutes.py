@@ -70,4 +70,4 @@ def getActivities():
             name
         })
 
-# getAllCourses(1)
+# getAllCo

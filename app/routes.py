@@ -98,12 +98,14 @@ def signup():
         except:
             print('database didnt work')
         return redirect('/')
-
+"""class City(object):
+    def __init__(self, name):
+        self.name = name"""
 
 @app.route('/addmobiliser',methods=['GET','POST'])
 def addmobiliser():
     if request.method == 'GET':
-        doc_ref = db.collection(u'mobilizer').document(f'{mobilizer.moid}')
+        doc_ref = db.collection(u'mobilizer').document()
         # name = request.form['name']
         # db.child('mobilizer').push({"name": name})
         # phone=request.form['phone']
@@ -113,22 +115,33 @@ def addmobiliser():
         # tar=request.form['tar']
 
         # client_auth.current_user
+        #print(doc_ref)
+        #print(doc_ref.collection(u'mobilizer').document(u'1').get().name)
+        ##doc_ref = db.collection(u'mobilizer').document(u'1')
+        #doc = doc_ref.get()
+        #mobilizer = Mobalizer.from_dict(doc.to_dict())
+        #print(mobalizer)
         return render_template('addmobiliser.html',docs=doc_ref)
 
     else:
+        #print(doc_ref.collection(u'mobilizer').document(u'1').get().name)
+
         mobilizer_id=request.form['mobilizer_id']
         name = request.form['name']
+        doc_ref = db.collection(u'mobalizer')
+        #doc_ref.document(u'1').set(
+        #Mobalizer("Madhavi").to_dict())
         phone=request.form['phone']
         cid=request.form['cid']
         tar=request.form['tar']
-        doc_ref = db.collection(u'mobilizer').document().set({
-            'mobilizer_id':mobilizer_id,
-            'name':name,
-            'phone':phone,
-            'center_id':cid,
-            'full_target':tar
+        doc_ref = db.collection(u'mobilizer').document(u'1').set({
+            u'mobilizer_id':mobilizer_id,
+            u'name':name,
+            u'phone':phone,
+            u'center_id':cid,
+            u'full_target':tar
         })
-        print(doc_ref.collection(u'mobilizer').document(mobilizer_id))
+
 
         return render_template('addmobiliser.html')
 

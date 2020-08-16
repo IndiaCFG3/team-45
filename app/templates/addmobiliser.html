@@ -22,7 +22,7 @@
               <a href="docs.html" class="btn btn-primary btn-lg disabled" role="button" aria-disabled="true" style=" float:right">Home</a>
             <h2>Add a Mobiliser</h2><br><br>
 
-            <form action="{{url_for('addmobiliser')}}">
+            <form action="{{url_for('addmobiliser')}}",method="POST">
               <div class="form-group">
             <label for="mobilizer_id"><b>Enter a Mobiliser id:</b></label>&emsp;
           <input type="number" id="mobilizer_id" name="mobilizer_id" placeholder="1"  required><br><br>
