@@ -149,3 +149,9 @@ def updatemobiliser():
 
         return render_template('updatemobiliser.html')
     return render_template('updatemobiliser.html')
+@app.route('/docs',methods=['GET','POST'])
+def docs():
+    return render_template('docs.html')
+        
+    
+    
