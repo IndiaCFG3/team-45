@@ -102,24 +102,15 @@ def signup():
 
 @app.route('/addmobiliser',methods=['GET','POST'])
 def addmobiliser():
-    if request.method == 'POST':
-<<<<<<< HEAD
-        doc_ref = db.collection(u'mobilizer').document(f'{mobilizer.moid}')
-        # name = request.form['name']
-        # db.child('mobilizer').push({"name": name})
-        # phone=request.form['phone']
-        # db.child('mobilizer').push({"phone": phone})
-        # cid=request.form['cid']
-        # db.child('mobilizer').push({"center_id": cid})
-        # tar=request.form['tar']
+    if request.method == 'GET':
+        doc_ref = db.collection(u'mobilizer')
+        docs=doc_ref.stream()
 
-        db.collection('')
-
-        # client_auth.current_user
-        return render_template('addmobiliser.html')
+        for doc in docs:
+            print(f'{doc.id},{doc.to_dict()}')
+        return render_template('addmobiliser.html',docs=doc_ref)
 
     else:
-=======
         mobilizer_id=request.form['mobilizer_id']
         name = request.form['name']
         phone=request.form['phone']
@@ -132,7 +123,8 @@ def addmobiliser():
             'center_id':cid,
             'full_target':tar
         })
->>>>>>> b76999c9803e5e278331fa8e3285dd7300e56183
+        print(doc_ref.collection(u'mobilizer').document(mobilizer_id))
+
         return render_template('addmobiliser.html')
 
 
@@ -175,18 +167,30 @@ def deletemobilizers():
             print(f'{doc.id}, {doc.to_dict()}')
 
     else:
-        doc_ref = db.collection(u'mobilizer').where(u'mobilizer_id', u'!=', mobilizer_id).document().set({
+        doc_ref = db.collection(u'mobilizer').document(u'mobilizer_id')
+        doc_ref.update({
+        'mobilizer_id':firestore.DELETE_FIELD,
+        'name':firestore.DELETE_FIELD,
+        'phone':firestore.DELETE_FIELD,
+        'center_id':firestore.DELETE_FIELD,
+        'full_target':firestore.DELETE_FIELD,
         })
 
 @app.route('/updatemobiliser/<mobilizer_id>', methods = ['GET', 'POST'])
 def updatemobiliser(mobilizer_id):
      if request.method == 'POST':
-         docs = db.collection(u'mobilizer').where(u'mobilizer_id', u'==', mobilizer_id).document().update({
-             'name':name,
-             'phone':phone,
-             'center_id':cid,
-             'full_target':tar
-             })
+         name = request.form['name']
+         phone=request.form['phone']
+         cid=request.form['cid']
+         tar=request.form['tar']
+         doc_ref = db.collection(u'objects').document(u'mobilizer_id')
+         doc_ref.update({
+         'name':name,
+         'phone':phone,
+         'center_id':cid,
+         'full_target':tar
+
+         })
 
 @app.route('/leads')
 def leads():

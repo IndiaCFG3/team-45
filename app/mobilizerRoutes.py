@@ -1,4 +1,4 @@
-from app import app
+"""from app import app
 from flask import render_template, request, redirect, flash
 from app.forms import LoginForm
 from config import db_config
@@ -31,21 +31,18 @@ def getAllCourses(centre_id):
         target = request.form['target']
         db.collection(u'course').document().set({
             u'name': name,
-            u'centre_id': centre_id
+            u'centre_id': centre_id,
             u'target': target
         })
 
 @app.route('/leads', methods = ['GET', 'POST'])
 def getAllLeads(mobilizer_id):
-     if request.method = 'GET':
+    if request.method == 'GET':
         docs = db.collection(u'lead').where(u'mobilizer_id', u'==', mobilizer_id).stream()
-
         leads = db.collection(u'lead').stream()
-
         for doc in docs:
             leadDict = doc.to_dict()
             print(f'{doc.id}, {leadDict}')
-
     else:
         name = request.form['name']
         phone = request.form['phone']
@@ -53,7 +50,6 @@ def getAllLeads(mobilizer_id):
         education = request.form['education']
         course = db.collection('course').where(u'name', '==', f'{request.form['course']}').limit(1).stream()
         course_id = course[0].id
-
         docs = db.collection(u'lead').document().update({
             u'name': name,
             u'phone': phone,
@@ -68,10 +64,11 @@ def getAllLeads(mobilizer_id):
 def getActivities():
     if request.method = 'GET':
         docs = db.collection(u'activity').where(u'mobilizer_id', u'==', mobilizer_id).stream()
-        
+
     else:
         db.collection(u'activity').document().update({
-            name 
+            name
         })
 
 # getAllCourses(1)
+"""
