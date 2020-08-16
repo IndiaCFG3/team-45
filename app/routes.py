@@ -103,49 +103,76 @@ def signup():
 @app.route('/addmobiliser',methods=['GET','POST'])
 def addmobiliser():
     if request.method == 'POST':
-        doc_ref = db.collection(u'mobilizer').document(f'{mobilizer.moid}')
+        mobilizer_id=request.form['mobilizer_id']
         name = request.form['name']
-        db.child('mobilizer').push({"name": name})
         phone=request.form['phone']
-        db.child('mobilizer').push({"phone": phone})
         cid=request.form['cid']
-        db.child('mobilizer').push({"center_id": cid})
         tar=request.form['tar']
+        doc_ref = db.collection(u'mobilizer').document().set({
+            'mobilizer_id':mobilizer_id,
+            'name':name,
+            'phone':phone,
+            'center_id':cid,
+            'full_target':tar
+        })
         return render_template('addmobiliser.html')
     return render_template('addmobiliser.html')
 
-@app.route('/delmobiliser',methods=['GET','POST'])
-def delmobiliser():
-    if request.method == 'POST':
+
+
+@app.route('/mobilizers/<mobilizer_id>', methods=['GET', 'POST'])
+def getAllmobilizers(mobilizer_id):
+    if request.method == 'GET':
+        docs = db.collection(u'mobilizer').stream()
+
+        for doc in docs:
+            courseDict = doc.to_dict()
+            print(f'{doc.id}, {doc.to_dict()}')
+
+    else:
         name = request.form['name']
-        db.child('mobilizer').pop({"name": name})
         phone=request.form['phone']
-        db.child('mobilizer').pop({"phone": phone})
         cid=request.form['cid']
-        db.child('mobilizer').pop({"center_id": cid})
         tar=request.form['tar']
-        db.child('mobilizer').pop({"full_target": tar})
-        db.child('mobilizer').push({"full_target": tar})
-        doc_ref.set({
-            'name':NULL,
-            'phone':NULL,
-            'center_id':NULL,
-            'full_target':NULL
+        doc_ref = db.collection(u'mobilizer').document().set({
+            'mobilizer_id':mobilizer_id,
+            'name':name,
+            'phone':phone,
+            'center_id':cid,
+            'full_target':tar
         })
-        return render_template('delmobiliser.html')
-    return render_template('delmobiliser.html')
+    return render_template("home.html")
 
-@app.route('/updatemobiliser',methods=['GET','POST'])
-def updatemobiliser():
-    if request.method == 'POST':
-        name = request.form['name']
-        db.child('mobilizer').update({"name": name})
-        phone=request.form['phone']
-        db.child('mobilizer').update({"phone": phone})
-        cid=request.form['cid']
-        db.child('mobilizer').update({"center_id": cid})
-        tar=request.form['tar']
-        db.child('mobilizer').update({"full_target": tar})
 
-        return render_template('updatemobiliser.html')
-    return render_template('updatemobiliser.html')
+@app.route('/deletemobilizers', methods=['GET', 'POST'])
+def deletemobilizers():
+    name = request.form['name']
+    phone=request.form['phone']
+    cid=request.form['cid']
+    tar=request.form['tar']
+    if request.method == 'GET':
+        docs = db.collection(u'mobilizer').where(u'mobilizer_id', u'!=', mobilizer_id).stream()
+
+        for doc in docs:
+            courseDict = doc.to_dict()
+            print(f'{doc.id}, {doc.to_dict()}')
+
+    else:
+        doc_ref = db.collection(u'mobilizer').where(u'mobilizer_id', u'!=', mobilizer_id).document().set({
+        })
+
+
+
+@app.route('/updatemobiliser/<mobilizer_id>', methods = ['GET', 'POST'])
+def updatemobiliser(mobilizer_id):
+     if request.method == 'POST':
+         docs = db.collection(u'mobilizer').where(u'mobilizer_id', u'==', mobilizer_id).document().update({
+             'name':name,
+             'phone':phone,
+             'center_id':cid,
+             'full_target':tar
+             })
+
+
+
+# getAllCourses(1)
