@@ -148,14 +148,14 @@
                                     class="hide-menu">Courses
                                 </span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/activities"
+                        <li class="sidebar-item selected"> <a class="sidebar-link sidebar-link" href="/activities"
                                 aria-expanded="false"><i data-feather="calendar" class="feather-icon"></i><span
                                     class="hide-menu">Activities</span></a></li>
-                        <li class="sidebar-item selected"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                        <li class="sidebar-item "> <a class="sidebar-link has-arrow" href="javascript:void(0)"
                             aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
                                 class="hide-menu">Leads </span></a>
                         <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                            <li class="sidebar-item"><a href="/addLeads" class="sidebar-link"><span
+                            <li class="sidebar-item"><a href="form-inputs.html" class="sidebar-link"><span
                                         class="hide-menu"> Add Lead
                                     </span></a>
                             </li>
@@ -163,7 +163,7 @@
                     </li>
 
                         <li class="list-divider"></li>
-                        
+
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -183,7 +183,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">
-                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Add Leads</h3>
+                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Update Activities</h3>
                     </div>
                 </div>
             </div>
@@ -201,11 +201,11 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title pb-3">Enter Lead Info</h4>
+                                <h4 class="card-title">Update Activities info</h4>
                                 <form action="#">
                                     <div class="form-body">
                                         <div class="form-group row">
-                                            <label class="col-md-2">Name </label>
+                                            <label class="col-md-2">Activity</label>
                                             <div class="col-md-5">
                                                 <div class="form-group">
                                                     <input type="text" class="form-control"
@@ -213,40 +213,46 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-2">Phone </label>
-                                            <div class="col-md-5">
-                                                <div class="form-group">
-                                                    <input type="number" class="form-control"
-                                                        placeholder="">
+                                        <div class="form-body">
+                                            <div class="form-group row">
+                                                <label class="col-md-2">Date & Time </label>
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <input type="datetime-local" class="form-control"
+                                                            placeholder="">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-2">Interest </label>
-                                            <div class="col-md-5">
-                                                <div class="form-group mb-4">
-                                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                                        <option selected value="computer">Computer</option>
-                                                        <option value="mathematics">Mathematics</option>
-                                                        <option value="tally">Tally</option>
-                                                    </select>
+
+                                        <div class="form-body">
+                                            <div class="form-group row">
+                                                <label class="col-md-2">Comment </label>
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-2">Education </label>
-                                            <div class="col-md-5">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control"
-                                                        placeholder="">
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
+                                    <div class="card-body">
+                                <h4 class="card-title">Status</h4>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">Pending</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">Postponed</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                                    <label class="form-check-label" for="inlineRadio3">Completed</label>
+                                </div>
+                            </div>
                                     <div class="form-actions">
                                         <div class="text-right">
-                                            <button type="submit" class="btn btn-info">Submit</button>
+                                            <button type="submit" class="btn btn-info">Update</button>
                                         </div>
                                     </div>
                                 </form>

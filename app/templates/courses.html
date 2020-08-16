@@ -143,7 +143,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="sidebar-item"> <a class="sidebar-link" href="/courses"
+                        <li class="sidebar-item selected"> <a class="sidebar-link" href="/courses"
                                 aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span
                                     class="hide-menu">Courses
                                 </span></a>
@@ -151,16 +151,9 @@
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/activities"
                                 aria-expanded="false"><i data-feather="calendar" class="feather-icon"></i><span
                                     class="hide-menu">Activities</span></a></li>
-                        <li class="sidebar-item selected"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                            aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
-                                class="hide-menu">Leads </span></a>
-                        <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                            <li class="sidebar-item"><a href="/addLeads" class="sidebar-link"><span
-                                        class="hide-menu"> Add Lead
-                                    </span></a>
-                            </li>
-                        </ul>
-                    </li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/leads"
+                                aria-expanded="false"><i data-feather="crosshair" class="feather-icon"></i><span
+                                    class="hide-menu">Leads</span></a></li>
 
                         <li class="list-divider"></li>
                         
@@ -182,8 +175,51 @@
             <!-- ============================================================== -->
             <div class="page-breadcrumb">
                 <div class="row">
-                    <div class="col-7 align-self-center">
-                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Add Leads</h3>
+                    <div class="col-12 align-self-center">
+                        <div class="">
+                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Courses
+                            <button
+                                type="button"
+                                class="btn btn-primary float-right mb-2"
+                            >
+                            <i data-feather="plus"></i>
+                            Add New Course
+                        </button>
+                        </h3>
+                        <div class="row">
+                            <div class="col-12 row mt-4">
+                                <div class="card text-white bg-dark w-25 mr-5">
+                                    <div class="card-body">
+                                        <h3 class="card-title text-white">Computer</h3>
+                                        <div class="card-text float-right mb-5">
+                                            <b>Target: </b> 100
+                                        </div>
+                                        <br />
+                                        <a href="javascript:void(0)" class="btn btn-primary">More Details</a>
+                                    </div>
+                                </div>
+                                <div class="card text-white bg-dark w-25 mr-5">
+                                    <div class="card-body">
+                                        <h3 class="card-title text-white">Designing</h3>
+                                        <div class="card-text float-right mb-5">
+                                            <b>Target: </b> 50
+                                        </div>
+                                        <br />
+                                        <a href="javascript:void(0)" class="btn btn-primary">More Details</a>
+                                    </div>
+                                </div>
+                                <div class="card text-white bg-dark w-25 mr-5">
+                                    <div class="card-body">
+                                        <h3 class="card-title text-white">Tally</h3>
+                                        <div class="card-text float-right mb-5">
+                                            <b>Target: </b> 75
+                                        </div>
+                                        <br />
+                                        <a href="javascript:void(0)" class="btn btn-primary">More Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -197,63 +233,7 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title pb-3">Enter Lead Info</h4>
-                                <form action="#">
-                                    <div class="form-body">
-                                        <div class="form-group row">
-                                            <label class="col-md-2">Name </label>
-                                            <div class="col-md-5">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control"
-                                                        placeholder="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-2">Phone </label>
-                                            <div class="col-md-5">
-                                                <div class="form-group">
-                                                    <input type="number" class="form-control"
-                                                        placeholder="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-2">Interest </label>
-                                            <div class="col-md-5">
-                                                <div class="form-group mb-4">
-                                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                                        <option selected value="computer">Computer</option>
-                                                        <option value="mathematics">Mathematics</option>
-                                                        <option value="tally">Tally</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-2">Education </label>
-                                            <div class="col-md-5">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control"
-                                                        placeholder="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-actions">
-                                        <div class="text-right">
-                                            <button type="submit" class="btn btn-info">Submit</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
