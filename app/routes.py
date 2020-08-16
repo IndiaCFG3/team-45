@@ -2,6 +2,7 @@ from app import app
 from flask import render_template, request, redirect, flash
 from app.forms import LoginForm
 from config import db_config
+from app import mobilizerRoutes
 
 import firebase_admin
 from firebase_admin import credentials, auth, firestore
