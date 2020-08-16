@@ -119,4 +119,4 @@ def addmobiliser():
             'full_target':tar
         })
         return render_template('addmobiliser.html')
-    return redirect('addmobiliser.html')
+    return render_template('addmobiliser.html')
