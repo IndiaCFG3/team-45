@@ -30,7 +30,7 @@ def getAllCourses(centre_id):
         name = request.form['name']
         target = request.form['target']
         db.collection(u'course').document().set({
-            u'name': name,
+            u'name': name
             u'centre_id': centre_id
             u'target': target
         })
