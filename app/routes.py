@@ -148,16 +148,15 @@ def updatemobiliser():
 
         return render_template('updatemobiliser.html')
     return render_template('updatemobiliser.html')
-<<<<<<< HEAD
+
+    
 @app.route('/docs',methods=['GET','POST'])
 def docs():
     return render_template('docs.html')
         
     
     
-=======
 
 @app.route('/leads')
 def leads():
     return render_template('leads.html')
->>>>>>> 8ae30f7ff0d6cb4a2ad901b3ca0d554598848df5
