@@ -134,3 +134,18 @@ def delmobiliser():
         })
         return render_template('delmobiliser.html')
     return render_template('delmobiliser.html')
+
+@app.route('/updatemobiliser',methods=['GET','POST'])
+def updatemobiliser():
+    if request.method == 'POST':
+        name = request.form['name']
+        db.child('mobilizer').update({"name": name})
+        phone=request.form['phone']
+        db.child('mobilizer').update({"phone": phone})
+        cid=request.form['cid']
+        db.child('mobilizer').update({"center_id": cid})
+        tar=request.form['tar']
+        db.child('mobilizer').update({"full_target": tar})
+
+        return render_template('updatemobiliser.html')
+    return render_template('updatemobiliser.html')
