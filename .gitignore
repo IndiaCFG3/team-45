@@ -128,3 +128,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 node_modules
+Team*.zip
+*.pem
+*.ppk
+*.crt
+*.key
+*.ovpn
