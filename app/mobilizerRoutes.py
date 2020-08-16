@@ -35,6 +35,25 @@ def getAllCourses(centre_id):
             u'target': target
         })
 
+@app.route('/leads/<mobilizer_id>', methods = ['GET', 'POST'])
+def getAllLeads(mobilizer_id):
+     if request.method = 'GET':
+        docs = db.collection(u'lead').where(u'mobilizer_id', u'==', mobilizer_id).stream()
+
+        for doc in docs:
+            leadDict = doc.to_dict()
+            print(f'{doc.id}, {leadDict}')
+
+    else:
+        docs = db.collection(u'lead').document().update({
+            u'name': name,
+            u'phone': phone,
+            u'interest': interests,
+            u'education': education,
+            u'mobilizer_id': mobilizer_id,
+            u'course_id': course_id,
+            u'status': status
+        })
 
 
 # getAllCourses(1)
