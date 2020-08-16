@@ -1,4 +1,4 @@
-"""from app import app
+from app import app
 from flask import render_template, request, redirect, flash
 from app.forms import LoginForm
 from config import db_config
@@ -30,8 +30,8 @@ def getAllCourses(centre_id):
         name = request.form['name']
         target = request.form['target']
         db.collection(u'course').document().set({
-            u'name': name,
-            u'centre_id': centre_id,
+            u'name': name
+            u'centre_id': centre_id
             u'target': target
         })
 
@@ -71,4 +71,3 @@ def getActivities():
         })
 
 # getAllCourses(1)
-"""

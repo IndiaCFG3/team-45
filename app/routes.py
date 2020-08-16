@@ -103,11 +103,16 @@ def signup():
 @app.route('/addmobiliser',methods=['GET','POST'])
 def addmobiliser():
     if request.method == 'GET':
-        doc_ref = db.collection(u'mobilizer')
-        docs=doc_ref.stream()
+        doc_ref = db.collection(u'mobilizer').document(f'{mobilizer.moid}')
+        # name = request.form['name']
+        # db.child('mobilizer').push({"name": name})
+        # phone=request.form['phone']
+        # db.child('mobilizer').push({"phone": phone})
+        # cid=request.form['cid']
+        # db.child('mobilizer').push({"center_id": cid})
+        # tar=request.form['tar']
 
-        for doc in docs:
-            print(f'{doc.id},{doc.to_dict()}')
+        # client_auth.current_user
         return render_template('addmobiliser.html',docs=doc_ref)
 
     else:
@@ -195,3 +200,7 @@ def updatemobiliser(mobilizer_id):
 @app.route('/leads')
 def leads():
     return render_template('leads.html')
+@app.route('/docs')
+def docs():
+    a=db.collection.get()
+    print(type(a))
