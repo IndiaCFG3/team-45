@@ -1,53 +1,195 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <title>Photo Ninja</title>
+  <style>
+    header{
+      background: url(../static/images/man2.jpg);
+      background-size: cover;
+      background-position: center;
+      min-height: 1000px;
+    }
+    @media screen and (max-width: 670px){
+      header{
+        min-height: 500px;
+      }
+    }
+    .section{
+      padding-top: 4vw;
+      padding-bottom: 4vw;
+    }
+    .tabs .indicator{
+      background-color: #1a237e;
+    }
+    .tabs .tab a:focus, .tabs .tab a:focus.active{
+      background: transparent;
+    }
+  </style>
 </head>
-    <style>
-.box{
-margin:0 auto; 
-width:600px //you can set it in %.
-padding:20px;
-background:lightblue;
-border:2px solid #333;
-}
-    </style>
 <body>
-<div class="box">
-<div class="container">
-  <h2>Add a Mobiliser</h2><br><br>
-  <form action="/">
-    <div class="form-group">
-        <label for="name"><b>Name</b></label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-      <input type="name" id="name" placeholder="Mobiliser name" name="name" required><br><br>
-    </div>
-      <div class="form-group">
-    <label for="phone"><b>Enter a phone number:</b></label>&emsp;
-  <input type="tel" id="phone" name="phone" placeholder="123-45-678"  required><br><br>
-    </div >
-     <div class="form-group">
-    <label for="cid"><b>Enter Center-ID</b></label>&emsp;&emsp;&emsp;&emsp;&emsp;
-  <input type="number" id="cid" name="cid" placeholder="Mobiliser Center-Id"  required><br><br>
-    </div >
-      <div class="form-group">
-    <label for="reg"><b>Enter Region</b></label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-  <input type="text" id="reg" name="reg" placeholder="Region"  required><br><br>
-    </div >
-       
-       <div class="form-group">
-    <label for="tar"><b>Enter Target</b></label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-  <input type="number" id="tar" name="tar" placeholder="Target for mobiliser" required><br><br>
-    </div >
 
-      
-    <button type="submit" class="btn btn-primary">Add Mobiliser</button>
-  </form>
-</div>
-</div>
+  <!-- navbar -->
+  <header>
+    <nav class="nav-wrapper" style="background-color: cornflowerblue;">
+      <div class="container">
+        <a href="#" class="brand-logo" style="color: rgb(41, 5, 66);">NGO name</a>
+        <a href="#" class="sidenav-trigger" data-target="mobile-menu">
+          <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/login" style="color: rgb(41, 5, 66);">Login</a></li>
+            <li><a href="{{url_for('addmobiliser')}}" style="color: rgb(41, 5, 66);">Add Mobiliser</a></li>
+          <li><a href="/signup" style="color: rgb(41, 5, 66);">Signup</a></li>
+          <!-- <li><a href="#contact">Contact</a></li> -->
+          <li><a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a></li>
+          <li><a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a></li>
+          <li><a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a></li>
+        </ul>
+        <ul class="sidenav grey lighten-2" id="mobile-menu">
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Sign up</a></li>
+          <!-- <li><a href="#">Contact</a></li> -->
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- photo / grid -->
+  <section class="container section scrollspy" id="photos">
+    <div class="row">
+      <div class="col s12 l4">
+          <img src="{{ url_for('static', filename= 'images/portrait.jpg') }}" alt="" class="responsive-img materialboxed">
+      </div>
+      <div class="col s12 l6 offset-l1">
+        <h2 class="indigo-text text-darken-4">Portraits</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 l4 offset-l1 push-l7">
+          <img src="{{ url_for('static', filename= 'images/city.jpg') }}" alt="" class="responsive-img materialboxed">
+      </div>
+      <div class="col s12 l6 offset-l1 pull-l5 right-align">
+        <h2 class="indigo-text text-darken-4">Cityscapes</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 l4">
+          <img src="{{ url_for('static', filename= 'images/nature.jpg') }}" alt="" class="responsive-img materialboxed">
+      </div>
+      <div class="col s12 l6 offset-l1">
+        <h2 class="indigo-text text-darken-4">Nature</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- parallax -->
+  <div class="parallax-container">
+    <div class="parallax">
+      <img src="{{ url_for('static', filename= 'images/street.jpg') }}" alt="" class="responsive-img">
+    </div>
+  </div>
+
+  <!-- services / tabs -->
+  <section class="section container scrollspy" id="services">
+    <div class="row">
+      <div class="col s12 l4">
+        <h2 class="indigo-text text-darken-4">What I do..</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci.</p>
+        <p>Mauris dolor augue, vulputate in pharetra ac, facilisis nec libero. Fusce condimentum gravida urna, vitae scelerisque erat ornare nec.</p>
+      </div>
+      <div class="col s12 l6 offset-l2">
+        <!-- tabs -->
+        <ul class="tabs">
+          <li class="tab col s6">
+            <a href="#photography" class="active indigo-text text-darken-4">Photography</a>
+          </li>
+          <li class="tab col s6">
+            <a href="#editing" class="indigo-text text-darken-4">Editing</a>
+          </li>
+        </ul>
+        <div id="photography" class="col s12">
+            <p class="flow-text indigo-text text-darken-4">Photography</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci.</p>
+            <p>Mauris dolor augue, vulputate in pharetra ac, facilisis nec libero. Fusce condimentum gravida urna, vitae scelerisque erat ornare nec.</p>
+        </div>
+        <div id="editing" class="col s12">
+            <p class="flow-text indigo-text text-darken-4">Editing</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci.</p>
+            <p>Mauris dolor augue, vulputate in pharetra ac, facilisis nec libero. Fusce condimentum gravida urna, vitae scelerisque erat ornare nec.</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- parallax -->
+  <!-- <div class="parallax-container">
+    <div class="parallax">
+      <img src="{{ url_for('static', filename= 'images/stars.jpg') }}" alt="" class="responsive-img">
+    </div>
+  </div> -->
+
+
+  <!-- footer -->
+  <footer class="page-footer grey darken-3">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5>About Me</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#">Facebook</a></li>
+            <li><a class="grey-text text-lighten-3" href="#">Twitter</a></li>
+            <li><a class="grey-text text-lighten-3" href="#">Linked In</a></li>
+            <li><a class="grey-text text-lighten-3" href="#">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright grey darken-4">
+      <div class="container center-align">&copy; 2018 Photo Ninja</div>
+    </div>
+  </footer>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function(){
+
+      $('.sidenav').sidenav();
+      $('.materialboxed').materialbox();
+      $('.parallax').parallax();
+      $('.tabs').tabs();
+      $('.datepicker').datepicker({
+        disableWeekends: true,
+        yearRange: 1
+      });
+      $('.tooltipped').tooltip();
+      $('.scrollspy').scrollSpy();
+
+    });
+  </script>
 </body>
 </html>

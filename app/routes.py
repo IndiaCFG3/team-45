@@ -7,7 +7,7 @@ import firebase_admin
 from firebase_admin import credentials, auth, firestore
 import pyrebase
 
-service_cred = credentials.Certificate('/home/bhavya_sheth/Desktop/jpmc45/app/serviceAccountKey.json')
+service_cred = credentials.Certificate('./app/serviceAccountKey.json')
 admin_app = firebase_admin.initialize_app(service_cred)
 
 firebase = pyrebase.initialize_app(db_config)
@@ -26,7 +26,7 @@ def index():
 def login():
     if request.method == 'GET':
         return render_template('login.html')
-    
+
     else:
         email = request.values.get('email')
         password = request.values.get('password')
@@ -50,7 +50,7 @@ def signup():
     print(request)
     if request.method == 'GET':
         return render_template('signup.html')
-    
+
     else:
         email = request.form['email']
         password = request.form['password']
@@ -63,11 +63,11 @@ def signup():
         name = request.form['fname'] + ' ' + request.form['lname']
         print(f'name is {name}')
 
-        # Sign up user 
+        # Sign up user
         try:
             creds = client_auth.create_user_with_email_and_password(email, password)
             print(creds)
-            print('sign up successful') 
+            print('sign up successful')
         except:
             flash('Sign up failed. Please try again!')
             print('error during sign up')
@@ -76,7 +76,7 @@ def signup():
         #give user admin role
         try:
             user = auth.get_user_by_email(email)
-            if admin == 'on':  
+            if admin == 'on':
                 auth.set_custom_user_claims(user.uid, {'admin': True})
             else:
                 auth.set_custom_user_claims(user.uid, {'admin': False})
@@ -99,5 +99,24 @@ def signup():
             print('database didnt work')
         return redirect('/')
 
-        
-    
+
+@app.route('/addmobiliser',methods=['GET','POST'])
+def addmobiliser():
+    if request.method == 'POST':
+        doc_ref = db.collection(u'mobilizer').document(f'{mobilizer.moid}')
+        name = request.form['name']
+        db.child('mobilizer').push({"name": name})
+        phone=request.form['phone']
+        db.child('mobilizer').push({"phone": phone})
+        cid=request.form['cid']
+        db.child('mobilizer').push({"center_id": cid})
+        tar=request.form['tar']
+        db.child('mobilizer').push({"full_target": tar})
+        doc_ref.set({
+            'name':name,
+            'phone':phone,
+            'center_id':cid,
+            'full_target':tar
+        })
+        return render_template('addmobiliser.html')
+    return redirect('addmobiliser.html')
