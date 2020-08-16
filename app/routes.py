@@ -11,7 +11,7 @@ firebase = pyrebase.initialize_app(db_config)
 db = firebase.database()
 client_auth = firebase.auth()
 
-service_cred = credentials.Certificate('/home/bhavya_sheth/Desktop/jpmc45/app/serviceAccountKey.json')
+service_cred = credentials.Certificate('./app/serviceAccountKey.json')
 admin_app = admin.initialize_app(service_cred)
 
 @app.route('/')
