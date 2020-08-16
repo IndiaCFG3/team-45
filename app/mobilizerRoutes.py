@@ -27,9 +27,9 @@ def getAllCourses(centre_id):
 
     else:
         centre_id = 234
-        name = 'Tally'
-        target = 10
-        doc_ref = db.collection(u'course').document().set({
+        name = request.form['name']
+        target = request.form['target']
+        db.collection(u'course').document().set({
             u'name': name,
             u'centre_id': centre_id
             u'target': target
@@ -45,6 +45,13 @@ def getAllLeads(mobilizer_id):
             print(f'{doc.id}, {leadDict}')
 
     else:
+        name = request.form['name']
+        phone = request.form['phone']
+        interests = request.form['interests']
+        education = request.form['education']
+        course = db.collection('course').where(u'name', '==', f'{request.form['course']}').limit(1).stream()
+        course_id = course[0].id
+
         docs = db.collection(u'lead').document().update({
             u'name': name,
             u'phone': phone,
@@ -55,5 +62,14 @@ def getAllLeads(mobilizer_id):
             u'status': status
         })
 
+@app.route('/activities/<mobilizer_id>', methods = ['GET', 'POST'])
+def getActivities():
+    if request.method = 'GET':
+        docs = db.collection(u'activity').where(u'mobilizer_id', u'==', mobilizer_id).stream()
+        
+    else:
+        db.collection(u'activity').document().update({
+            name 
+        })
 
 # getAllCourses(1)
