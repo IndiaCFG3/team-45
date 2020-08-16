@@ -2,17 +2,18 @@ from app import app
 from flask import render_template, request, redirect, flash
 from app.forms import LoginForm
 from config import db_config
-# from firebase import Firebase
-import firebase_admin as admin
-from firebase_admin import credentials, auth
+
+import firebase_admin
+from firebase_admin import credentials, auth, firestore
 import pyrebase
 
-firebase = pyrebase.initialize_app(db_config)
-db = firebase.database()
-client_auth = firebase.auth()
-
 service_cred = credentials.Certificate('/home/bhavya_sheth/Desktop/jpmc45/app/serviceAccountKey.json')
-admin_app = admin.initialize_app(service_cred)
+admin_app = firebase_admin.initialize_app(service_cred)
+
+firebase = pyrebase.initialize_app(db_config)
+# db = firebase.database()
+db = firestore.client()
+client_auth = firebase.auth()
 
 @app.route('/')
 @app.route('/index')
@@ -58,6 +59,7 @@ def signup():
             admin = request.form['admin']
         except:
             admin = 'off'
+
         name = request.form['fname'] + ' ' + request.form['lname']
         print(f'name is {name}')
 
@@ -89,7 +91,10 @@ def signup():
 
         #add name in user db
         try:
-            db.child('users').child(user.uid).push({"name": name})
+            doc_ref = db.collection(u'users').document(f'{user.uid}')
+            doc_ref.set({
+                u'name': name
+            })
         except:
             print('database didnt work')
         return redirect('/')

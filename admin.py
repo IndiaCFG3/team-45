@@ -11,7 +11,10 @@ firebase = pyrebase.initialize_app(db_config)
 db = firestore.client()
 client_auth = firebase.auth()
 
-user = auth.get_user_by_email('bhavya@gmail.com')
+# bhavya@gmail.com
+# bhavya
+
+user = auth.get_user_by_email(f'bhavya@gmail.com')
 # final = auth.set_custom_user_claims(user.uid, {
 #     "admin": True
 # })
@@ -24,10 +27,28 @@ user = auth.get_user_by_email('bhavya@gmail.com')
 
 # resp = db.child('users').child(user.uid).push({"name": "bhavya sheth"})
 # print(resp)
-doc_ref = db.collection(u'users').document(f'{user.uid}')
-doc_ref.set({
-    u'name': 'bhavya sheth'
-})
+# doc_ref = db.collection(u'users').document(f'{user.uid}')
+# doc_ref.set({
+#     u'name': 'bhavya sheth'
+# })
+
+def getAllCourses(centre_id):
+    # docs = db.collection(u'center').stream()
+
+    # for doc in docs:
+        # print(f'{doc.id}, {doc.to_dict()}')
+    centre_id = 234
+    name = 'Tally'
+    target = 10
+    doc_ref = db.collection(u'course').document(f'{name}')
+
+    doc_ref.set({
+        u"name": name,
+        u"centre_id": centre_id,
+        u"target": target
+    })
+
+getAllCourses(1)
 
 # users = db.child("users").get()
 # print(users.val())
