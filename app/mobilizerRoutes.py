@@ -8,7 +8,7 @@ from firebase_admin import credentials, auth, firestore
 import pyrebase
 
 
-service_cred = credentials.Certificate('/home/bhavya_sheth/Desktop/jpmc45/app/serviceAccountKey.json')
+service_cred = credentials.Certificate('./app/serviceAccountKey.json')
 admin_app = admin.initialize_app(service_cred)
 
 firebase = pyrebase.initialize_app(db_config)
