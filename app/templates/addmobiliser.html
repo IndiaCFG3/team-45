@@ -1,5 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <style>
+    .box{
+    margin:0 auto;
+    width:600px //you can set it in %.
+    padding:20px;
+    background:lightblue;
+    border:2px solid #333;
+    }
+  </style>
+  <body>
+    <div class="box">
+      <div class="container">
+        <a
+          href="docs.html"
+          class="btn btn-primary btn-lg disabled"
+          role="button"
+          aria-disabled="true"
+          style="float: right;"
+          >Home</a
+        >
+        <h2>Add a Mobiliser</h2>
+        <br /><br />
+
+        <form action="{{url_for('addmobiliser')}}">
+          <div class="form-group">
+            <label for="name"><b>Name</b></label
+            >&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            <input
+              type="name"
+              id="name"
+              placeholder="Mobiliser name"
+              name="name"
+              required
+            /><br /><br />
+          </div>
+          <div class="form-group">
+            <label for="phone"><b>Enter a phone number:</b></label
+            >&emsp;
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="123-45-678"
+              required
+            /><br /><br />
+          </div>
+          <div class="form-group">
+            <label for="cid"><b>Enter Center-ID</b></label
+            >&emsp;&emsp;&emsp;&emsp;&emsp;
+            <input
+              type="number"
+              id="cid"
+              name="cid"
+              placeholder="Mobiliser Center-Id"
+              required
+            /><br /><br />
+          </div>
+          <div class="form-group">
+            <label for="reg"><b>Enter Region</b></label
+            >&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            <input
+              type="text"
+              id="reg"
+              name="reg"
+              placeholder="Region"
+              required
+            /><br /><br />
+          </div>
+=======
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,17 +125,23 @@ border:2px solid #333;
     <label for="reg"><b>Enter Region</b></label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
   <input type="text" id="reg" name="reg" placeholder="Region"  required><br><br>
     </div >
+>>>>>>> b76999c9803e5e278331fa8e3285dd7300e56183
 
-       <div class="form-group">
-    <label for="tar"><b>Enter Target</b></label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-  <input type="number" id="tar" name="tar" placeholder="Target for mobiliser" required><br><br>
-    </div >
+          <div class="form-group">
+            <label for="tar"><b>Enter Target</b></label
+            >&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            <input
+              type="number"
+              id="tar"
+              name="tar"
+              placeholder="Target for mobiliser"
+              required
+            /><br /><br />
+          </div>
 
-    
-    <button type="submit" class="btn btn-primary">Add Mobiliser</button>
-    
-  </form>
-</div>
-</div>
-</body>
+          <button type="submit" class="btn btn-primary">Add Mobiliser</button>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>

@@ -2,6 +2,7 @@ from app import app
 from flask import render_template, request, redirect, flash
 from app.forms import LoginForm
 from config import db_config
+from app import mobilizerRoutes
 
 import firebase_admin
 from firebase_admin import credentials, auth, firestore
@@ -102,6 +103,23 @@ def signup():
 @app.route('/addmobiliser',methods=['GET','POST'])
 def addmobiliser():
     if request.method == 'POST':
+<<<<<<< HEAD
+        doc_ref = db.collection(u'mobilizer').document(f'{mobilizer.moid}')
+        # name = request.form['name']
+        # db.child('mobilizer').push({"name": name})
+        # phone=request.form['phone']
+        # db.child('mobilizer').push({"phone": phone})
+        # cid=request.form['cid']
+        # db.child('mobilizer').push({"center_id": cid})
+        # tar=request.form['tar']
+
+        db.collection('')
+
+        # client_auth.current_user
+        return render_template('addmobiliser.html')
+
+    else:
+=======
         mobilizer_id=request.form['mobilizer_id']
         name = request.form['name']
         phone=request.form['phone']
@@ -114,8 +132,8 @@ def addmobiliser():
             'center_id':cid,
             'full_target':tar
         })
+>>>>>>> b76999c9803e5e278331fa8e3285dd7300e56183
         return render_template('addmobiliser.html')
-    return render_template('addmobiliser.html')
 
 
 
